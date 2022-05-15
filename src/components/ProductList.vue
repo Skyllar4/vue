@@ -8,16 +8,11 @@
 
 <script>
 import ProductListItem from './ProductListItem.vue'
-import products from '../data/products'
 
 
 export default {
     components: {ProductListItem},
-    computed: {
-        products() {
-            return products
-        }
-    }
+    props: ['products'],
 }
 </script>
 
