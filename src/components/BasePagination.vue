@@ -8,13 +8,13 @@
                         </a>
                     </li>
                       <li class="pagination__item" v-for="pageNumber in pages" :key="pageNumber">
-                        <a href="#" class="pagination__link" :class="{'pagination__link--current': pageNumber === page}" @click.prevent="paginate(pageNumber)">
+                        <a href="#" class="pagination__link" :class="{'pagination__link--current': pageNumber === page}" @click.prevent="paginate(page)">
                         {{pageNumber}}
                         </a>
                     </li>
                     
                     <li class="pagination__item">
-                        <a class="pagination__link pagination__link--arrow" href="#" aria-label="Следующая страница" @click="nextPage()">
+                        <a class="pagination__link pagination__link--arrow" href="#" aria-label="Следующая страница" @click.prevent="nextPage(pageNumber)">
                             <svg width="8" height="14" fill="currentColor">
                 <use xlink:href="#icon-arrow-right"></use>
               </svg>
@@ -37,11 +37,13 @@
         },
         methods: {
             paginate(page) {
-                    this.$emit('paginate', page)
+                alert(page)
+                alert(this.page)
+             return this.$emit('paginate', page) // бещ return тоже не работает
             },
-            nextPage(){
-                this.page++;
+            nextPage(page) {
+                return page++
             }
-        }
+        } 
     }
 </script>
